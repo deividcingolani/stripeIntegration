@@ -52,6 +52,8 @@ const CheckoutForm = () => {
 
     return (
         <>
+            <h1>Data for test</h1>
+            <p> Card number 4242424242424242</p>
         <form 
             onSubmit={handleSubmit}
         >
