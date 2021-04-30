@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
     CardElement,
     useStripe,
@@ -33,7 +33,7 @@ function CardSection() {
 }
 
 const CheckoutForm = () => {
-
+    const [payment, setPayment]=useState()
     const stripe = useStripe();
     const elements = useElements();
 
@@ -46,11 +46,12 @@ const CheckoutForm = () => {
         if(error){
             console.log(error);
         } else {
-            console.log(paymentMethod);
+            setPayment(paymentMethod)
         }
     };
 
     return (
+        <>
         <form 
             onSubmit={handleSubmit}
         >
@@ -58,7 +59,11 @@ const CheckoutForm = () => {
             <button type="submit" disabled={!stripe}>
                 Pay
             </button>
+
         </form>
+            {JSON.stringify(payment, null, 2)}
+
+        </>
     )
 }
 
